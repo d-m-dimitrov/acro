@@ -1,0 +1,62 @@
+[ 
+    {
+      "code": "ACARS",
+      "definition": "Aircraft Communications Addressing and Reporting System"
+    },
+    {
+      "code": "AODB",
+      "definition": "Airport Operational Database"
+    },
+    {
+      "code": "AOP",
+      "definition": "Airport Operations Plan"
+    },
+    {
+      "code": "APU",
+      "definition": "Auxilary Power Unit"
+    },
+    {
+      "code": "ASU",
+      "definition": "Air Starter Unit"
+    },
+    {
+      "code": "ATC",
+      "definition": "Air Traffic Control"
+    },
+    {
+      "code": "AVI",
+      "definition": "Live Animal"
+    },
+    {
+      "code": "BHS",
+      "definition": "Baggage Handling System"
+    },
+    {
+      "code": "BRS",
+      "definition": "Baggage Reconcilation System"
+    },
+    {
+      "code": "CAA",
+      "definition": "Civil Aviation Authority"
+    },
+    {
+      "code": "DCS",
+      "definition": "Departure Control System"
+    },
+    {
+      "code": "LIR",
+      "definition": "Loading Instruction/Report"
+    },
+    {
+      "code": "LS",
+      "definition": "Loadsheet"
+    },
+    {
+      "code": "ULD",
+      "definition": "Unit Load Device"
+    },
+    {
+      "code": "UTC",
+      "definition": "Universal Time Coordinated"
+    }
+]
