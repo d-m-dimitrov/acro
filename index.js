@@ -30,8 +30,8 @@ app.get('/', (req, res) => {
   });
 
   app.get('/search', (req, res) => {
-    const searchTerm = req.query.search;
-    console.log(req.query.search);
+    const searchTerm = req.query.search.toUpperCase();
+    console.log(searchTerm);
     const results = data.filter(item => item.code === searchTerm);
   
     console.log(results);
