@@ -20,11 +20,13 @@ block content
                       thead
                           tr
                           th.text-center Code
+                          th.text-center Group
                           th.text-center Definition
                       tbody
                           each item in results
                               tr
                               td= item.code
+                              td= item.group
                               td= item.definition
                 else if (results.length === 0 )
                     h3.mt-5 No results found
