@@ -1,44 +1,41 @@
 const express = require('express');
 const path = require('path');
-const data = require('./public/data/dict.json');
+const axios = require('axios');
+
+const fileUrl = `https://www.dropbox.com/s/7orr4x3t60n4fcf/dict.json?raw=1`;
 
 const app = express();
-
 const PORT = process.env.PORT || 3000;
 
-//app.use(express.json());
-//app.use(express.urlencoded({extended:false}));
-
-app.use(express.static(path.join(__dirname,'public')));
-
-app.set('views',path.join(__dirname, 'public','views'))
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'public', 'views'));
 app.set('view engine', 'pug');
 
-
-//app.get("/", (req, res) => {
- //   res.set({
- //       "Allow-access-Allow-Origin": "*",
- //   });
- //
- //   res.sendFile(path.join(__dirname,'public','index.html'));
-//});
-
 app.get('/', (req, res) => {
-    res.render('home', {
-      title: 'dnata Acronym Dictionary',
+  res.render('home', {
+    title: 'dnata Acronym Dictionary',
+  });
+});
+
+app.get('/search', (req, res) => {
+  const searchTerm = req.query.search.toUpperCase();
+  console.log(searchTerm);
+  axios.get(fileUrl, {
+      responseType: 'text'
+    })
+    .then(response => {
+      const jsonData = JSON.parse(response.data);
+      const results = Array.isArray(jsonData) ? jsonData.filter(item => item.code.toUpperCase().includes(searchTerm)) : [];
+      console.log(results);
+      res.render('home', {
+        results
+      });
+    })
+    .catch(error => {
+      console.error(error);
     });
-  });
-
-  app.get('/search', (req, res) => {
-    const searchTerm = req.query.search.toUpperCase();
-    console.log(searchTerm);
-    const results = data.filter(item => item.code.toUpperCase().includes(searchTerm));
-  
-    console.log(results);
-    res.render('home', { results });
-  });
-
+});
 
 app.listen(PORT, () => {
-    console.log(`The Server started successfully on port ${PORT}`);
+  console.log(`The Server started successfully on port ${PORT}`);
 });
